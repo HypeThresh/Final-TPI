@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('main_addr');
             $table->string('shipping_addr');
             $table->boolean('rol')->default(false);
-            $table->boolean('first_purchase')->default(false);
         });
     }
 
