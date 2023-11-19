@@ -21,8 +21,8 @@ return new class extends Migration
             $table->decimal('amount', 10, 2);
             $table->unsignedBigInteger('payment_id');
             $table->foreign('payment_id')->references('payment_id')->on('payment_method');
-            $table->timestamps('purchase_date');
-            $table->timestamps('cancel_date');
+            $table->timestamp('purchase_date');
+            $table->timestamp('cancel_date');
             $table->boolean('purchase_state')->default(true);
         });
     }

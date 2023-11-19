@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('id_supplier')->references('id_supplier')->on('product_supplier');
             $table->decimal('product_price', 10, 2);
             $table->integer('product_stock');
-            $table->decimal('product_cost',10,2);        
+            $table->decimal('product_cost',10,2); 
         });
     }
 
