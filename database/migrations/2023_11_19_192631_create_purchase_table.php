@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('purchase', function (Blueprint $table) {
             $table->id('id_purchase');
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_user')->nullable();
             $table->foreign('id_user')->references('id_user')->on('users');
-            $table->unsignedBigInteger('product_code');
+            $table->unsignedBigInteger('product_code')->nullable();
             $table->foreign('product_code')->references('product_code')->on('product');
             $table->integer('product_quantity');
             $table->decimal('amount', 10, 2);
-            $table->unsignedBigInteger('payment_id');
+            $table->unsignedBigInteger('payment_id')->nullable();
             $table->foreign('payment_id')->references('payment_id')->on('payment_method');
-            $table->timestamps('purchase_date');
-            $table->timestamps('cancel_date');
+            $table->timestamps();
+            $table->timestamp('cancel_date')->nullable();
             $table->boolean('purchase_state')->default(true);
         });
     }
