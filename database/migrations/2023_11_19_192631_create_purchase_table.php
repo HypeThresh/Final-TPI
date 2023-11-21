@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('purchase', function (Blueprint $table) {
             $table->id('id_purchase');
             $table->unsignedBigInteger('id_user')->nullable();
-            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->unsignedBigInteger('product_code')->nullable();
             $table->foreign('product_code')->references('product_code')->on('product');
             $table->integer('product_quantity');

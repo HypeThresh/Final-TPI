@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('discount_coupon', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id_user')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('first_disc')->default(false);
             $table->integer('available_coupon');
         });
