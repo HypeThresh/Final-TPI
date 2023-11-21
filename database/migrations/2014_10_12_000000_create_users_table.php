@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('id_user');
+            $table->id();
             $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('main_addr');
             $table->string('shipping_addr');
             $table->boolean('rol')->default(false);
+            $table->timestamps();
         });
     }
 
