@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_product_payment', function (Blueprint $table) {
+        Schema::create('user_coupon', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('product');
-            $table->unsignedBigInteger('payment_id');
-            $table->foreign('payment_id')->references('id')->on('payment_method');
-
+            $table->unsignedBigInteger('discount_id');
+            $table->foreign('discount_id')->references('id')->on('discount_coupon');
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_product_payment');
+        Schema::dropIfExists('user_coupon');
     }
 };
