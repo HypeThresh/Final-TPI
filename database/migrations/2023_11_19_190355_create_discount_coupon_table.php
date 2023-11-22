@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('first_disc')->default(false);
             $table->integer('available_coupon');
+            $table->timestamps();
         });
     }
 

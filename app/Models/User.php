@@ -10,6 +10,6 @@ class User extends Model
     use HasFactory;
 
     public function product(){
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(User::class);
     }
 }

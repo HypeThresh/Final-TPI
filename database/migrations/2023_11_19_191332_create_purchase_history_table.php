@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('purchase_history', function (Blueprint $table) {
             $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->unsignedBigInteger('id_purchase');
-            $table->foreign('id_purchase')->references('id_purchase')->on('purchase');
+            $table->foreign('id_purchase')->references('id')->on('purchase');
         });
     }
 

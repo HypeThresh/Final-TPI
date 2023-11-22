@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('product_category', function (Blueprint $table) {
             $table->unsignedBigInteger('id_category');
-            $table->foreign('id_category')->references('id_category')->on('category');
+            $table->foreign('id_category')->references('id')->on('category');
             $table->unsignedBigInteger('product_code');
-            $table->foreign('product_code')->references('product_code')->on('product');
+            $table->foreign('product_code')->references('id')->on('product');
+            $table->timestamps();
         });
     }
 
