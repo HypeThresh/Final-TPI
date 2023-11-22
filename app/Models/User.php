@@ -9,7 +9,15 @@ class User extends Model
 {
     use HasFactory;
 
-    public function product(){
-        return $this->hasMany(Product::class);
+    public function coupon(){
+        return $this->belongsToMany(Discount::class,'user_coupon');
+    }
+
+    public function wishlist(){
+        return $this->belongsToMany(Wishlist::class,'wish_list');
+    }
+
+    public function purchase(){
+        return $this->belongsToMany(Purchase::class,'purchase');
     }
 }

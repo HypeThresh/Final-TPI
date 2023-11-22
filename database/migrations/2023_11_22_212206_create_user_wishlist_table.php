@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('discount_coupon', function (Blueprint $table) {
+        Schema::create('user_wishlist', function (Blueprint $table) {
             $table->id();
-            $table->boolean('first_disc')->default(true);
-            $table->integer('available_coupon');
             $table->timestamps();
         });
     }
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('discount_coupon');
+        Schema::dropIfExists('user_wishlist');
     }
 };

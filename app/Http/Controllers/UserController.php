@@ -13,7 +13,23 @@ class UserController extends Controller
     {
         $users = User::all();
         //return $users as json response
-        return response()->json($users);
+        $array = [];
+        foreach($users as $user){
+            $array[]= [
+                'id' => $user->id,
+                'name' => $user->name,
+                'username' => $user->username,
+                'email' => $user->email,
+                'gender'=> $user->gender,
+                'age' => $user->age,
+                'country' => $user->country,
+                'main_addr' => $user->main_addr,
+                'shipping_addr' => $user->shipping_addr,
+                'rol' => $user->rol,
+                'discount' => $user->coupon
+            ];
+        }
+        return response()->json($array);
     }
 
     /**
@@ -103,4 +119,38 @@ class UserController extends Controller
         );
         return response()->json($data);
     }
+
+    public function attach(Request $request){
+
+        $user = User::find($request->user_id);
+        $user->coupon()->attach($request->discount_id);
+        $data = array(
+            'message' => 'Discount attached successfully',
+            'user' => $user
+        );
+        return response()->json($data);
+    }
+    
+    public function attachWishlist(Request $request){
+
+        $user = User::find($request->user_id);
+        $user->wishlist()->attach($request->wishlist_id);
+        $data = array(
+            'message' => 'Wishlist attached successfully',
+            'user' => $user
+        );
+        return response()->json($data);
+    }
+
+    public function attachPurchase(Request $request){
+
+        $user = User::find($request->user_id);
+        $user->purchase()->attach($request->purchase_id);
+        $data = array(
+            'message' => 'Purchasee attached successfully',
+            'user' => $user
+        );
+        return response()->json($data);
+    }
+
 }
