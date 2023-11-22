@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('product_supplier', function (Blueprint $table) {
-            $table->id('id_supplier');
+            $table->id();
             $table->string('name_supplier');
             $table->text('supplier_contact');
+            $table->timestamps();
         });
     }
 
