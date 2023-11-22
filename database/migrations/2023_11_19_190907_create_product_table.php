@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name_product');
             $table->text('description_product');
             $table->string('img_product');
-            $table->unsignedBigInteger('id_supplier')->nullable();
+            $table->unsignedBigInteger('id_supplier');
             $table->foreign('id_supplier')->references('id')->on('product_supplier');
             $table->decimal('product_price', 10, 2);
             $table->integer('product_stock');
