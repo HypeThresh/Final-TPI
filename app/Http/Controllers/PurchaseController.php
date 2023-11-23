@@ -125,4 +125,26 @@ class PurchaseController extends Controller
         );
         return response()->json($data);
     }
+
+    public function detach(Request $request){
+        $purchase = Purchase::find($request->purchase_id);
+        $purchase->products()->detach($request->product_id);
+        //return $purchase as json response
+        $data = array(
+            'message' => 'Product detached successfully',
+            'purchase' => $purchase
+        );
+        return response()->json($data);
+    }
+
+    public function detachPayment(Request $request){
+        $purchase = Purchase::find($request->purchase_id);
+        $purchase->payment()->detach($request->payment_id);
+        //return $purchase as json response
+        $data = array(
+            'message' => 'Payment detached successfully',
+            'purchase' => $purchase
+        );
+        return response()->json($data);
+    }
 }

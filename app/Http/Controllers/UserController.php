@@ -169,4 +169,37 @@ class UserController extends Controller
         return response()->json($data);
     }
 
+    public function detach(Request $request){
+
+        $user = User::find($request->user_id);
+        $user->coupon()->detach($request->discount_id);
+        $data = array(
+            'message' => 'Discount detached successfully',
+            'user' => $user
+        );
+        return response()->json($data);
+    }
+
+    public function detachWishlist(Request $request){
+
+        $user = User::find($request->user_id);
+        $user->wishlist()->detach($request->wishlist_id);
+        $data = array(
+            'message' => 'Wishlist detached successfully',
+            'user' => $user
+        );
+        return response()->json($data);
+    }
+
+    public function detachPurchase(Request $request){
+
+        $user = User::find($request->user_id);
+        $user->purchase()->detach($request->purchase_id);
+        $data = array(
+            'message' => 'Purchase detached successfully',
+            'user' => $user
+        );
+        return response()->json($data);
+    }
+
 }
