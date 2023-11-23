@@ -96,4 +96,14 @@ class ProductController extends Controller
         );
         return response()->json($data);
     }
+
+    public function attach(Request $request){
+        $product = Product::find($request->product_id);
+        $product->category()->attach($request->category_id);
+        $data = array(
+            'message' => 'Category attached successfully',
+            'product' => $product
+        );
+        return response()->json($data);
+    }
 }

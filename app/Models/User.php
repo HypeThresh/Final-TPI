@@ -20,4 +20,8 @@ class User extends Model
     public function purchase(){
         return $this->belongsToMany(Purchase::class,'purchase_history');;
     }
+
+    public function payment(){
+        return $this->belongsToMany(Payment::class,'user_product_payment');
+    }
 }
