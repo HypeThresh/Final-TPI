@@ -11,9 +11,9 @@ class Product extends Model
 
     protected  $table = 'product';
 
-    public function product(){
+    public function purchase(){
         //return a belongsTo relationship for a table called product
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Purchase::class,'products_purchase');
     }
 
 }

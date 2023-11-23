@@ -83,4 +83,14 @@ class WishlistController extends Controller
         );
         return response()->json($data);
     }
+
+    public function attach(Request $request){
+        $wishlist = Wishlist::find($request->wishlist_id);
+        $wishlist->products()->attach($request->product_id);
+        $data = array(
+            'message' => 'Product attached successfully',
+            'wishlist' => $wishlist
+        );
+        return response()->json($data);
+    }
 }

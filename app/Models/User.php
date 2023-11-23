@@ -14,10 +14,10 @@ class User extends Model
     }
 
     public function wishlist(){
-        return $this->belongsToMany(Wishlist::class,'wish_list');
+        return $this->belongsToMany(Wishlist::class,'user_wishlist');
     }
 
     public function purchase(){
-        return $this->belongsToMany(Purchase::class,'purchase');
+        return $this->belongsToMany(Purchase::class,'purchase_history');;
     }
 }

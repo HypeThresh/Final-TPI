@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('purchase_history', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::create('purchase_payment', function (Blueprint $table) {
             $table->unsignedBigInteger('purchase_id');
             $table->foreign('purchase_id')->references('id')->on('purchase');
+            $table->unsignedBigInteger('payment_id');
+            $table->foreign('payment_id')->references('id')->on('payment_method');
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('purchase_history');
+        Schema::dropIfExists('purchase_payment');
     }
 };

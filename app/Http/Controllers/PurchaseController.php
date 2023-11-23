@@ -12,8 +12,22 @@ class PurchaseController extends Controller
     public function index()
     {
         $purchases = Purchase::all();
-        //return $purchase as json response
-        return response()->json($purchases);
+        $array = [];
+
+        foreach($purchases as $purchase){
+            $array[]= [
+                'id' => $purchase->id,
+                'product_quantity' => $purchase->product_quantity,
+                'amount' => $purchase->amount,
+                'purchase_state' => $purchase->purchase_state,
+                'created_at' => $purchase->created_at,
+                'updated_at' => $purchase->updated_at,
+                'products' => $purchase->products,
+                'payment' => $purchase->payment
+
+            ];
+        }
+        return response()->json($array);
     }
 
     /**
@@ -85,6 +99,28 @@ class PurchaseController extends Controller
         //return $purchase as json response
         $data = array(
             'message' => 'Purchase deleted successfully',
+            'purchase' => $purchase
+        );
+        return response()->json($data);
+    }
+    
+    public function attach(Request $request){
+        $purchase = Purchase::find($request->purchase_id);
+        $purchase->products()->attach($request->product_id);
+        //return $purchase as json response
+        $data = array(
+            'message' => 'Purchase attached successfully',
+            'purchase' => $purchase
+        );
+        return response()->json($data);
+    }
+
+    public function attachPayment(Request $request){
+        $purchase = Purchase::find($request->purchase_id);
+        $purchase->payment()->attach($request->payment_id);
+        //return $purchase as json response
+        $data = array(
+            'message' => 'Payment attached successfully',
             'purchase' => $purchase
         );
         return response()->json($data);
