@@ -10,8 +10,8 @@ class Wishlist extends Model
     use HasFactory;
     
     protected $table = 'wish_list';
-    public function product(){
-        return $this->belongsToMany(Wishlist::class,'product_wishlist');
+    public function products(){
+        return $this->belongsToMany(Product::class,'product_wishlist');
     }
 
     public function users(){

@@ -12,6 +12,15 @@ class WishlistController extends Controller
     public function index()
     {
         $wishlist = Wishlist::all();
+        $array = [];
+        foreach($wishlist as $wish){
+            $array[]= [
+                'id' => $wish->id,
+                'name_wishlist' => $wish->name_wishlist,
+                'products' => $wish->products
+            ];
+        }
+
         return response()->json($wishlist);
     }
 
@@ -89,6 +98,16 @@ class WishlistController extends Controller
         $wishlist->products()->attach($request->product_id);
         $data = array(
             'message' => 'Product attached successfully',
+            'wishlist' => $wishlist
+        );
+        return response()->json($data);
+    }
+
+    public function attachWishlist(Request $request){
+        $wishlist = Wishlist::find($request->wishlist_id);
+        $wishlist->products()->attach($request->product_id);
+        $data = array(
+            'message' => 'Product attach successfully',
             'wishlist' => $wishlist
         );
         return response()->json($data);
