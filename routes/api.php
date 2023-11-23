@@ -67,10 +67,11 @@ Route::put("/discount/{discount}", "App\Http\Controllers\DiscountController@upda
 Route::delete("/discount/{discount}", "App\Http\Controllers\DiscountController@destroy");
 
 Route::post("/users/discount", "App\Http\Controllers\UserController@attach");//ready
-Route::post("/users/wishlist", "App\Http\Controllers\UserController@attachWishlist");//not yet
-Route::post("/users/purchase", "App\Http\Controllers\UserController@attachPurchase");//not yet
-Route::post("/wishlist/product", "App\Http\Controllers\ProductController@attachwishlist");//not yet
-Route::post("/purchase/payment", "App\Http\Controllers\PurchaseController@attachpayment");//not yet
+Route::post("/users/wishlist", "App\Http\Controllers\UserController@attachWishlist");//ready
+Route::post("/users/purchase", "App\Http\Controllers\UserController@attachPurchase");//ready
+Route::post("/wishlist/product", "App\Http\Controllers\ProductController@attachwishlist");//ready
+Route::post("/purchase/product", "App\Http\Controllers\PurchaseController@attach");//ready
+Route::post("/purchase/payment", "App\Http\Controllers\PurchaseController@attachPayment");//ready
 Route::post("/products/category", "App\Http\Controllers\ProductController@attachcategory");//not yet
 Route::post("/products/supplier", "App\Http\Controllers\ProductController@attachsupplier");//not yet
 

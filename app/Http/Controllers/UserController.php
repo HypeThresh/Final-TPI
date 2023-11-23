@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Product;
 use App\Models\User;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with('purchase.products')->get();
         //return $users as json response
         $array = [];
         foreach($users as $user){
@@ -26,7 +29,9 @@ class UserController extends Controller
                 'main_addr' => $user->main_addr,
                 'shipping_addr' => $user->shipping_addr,
                 'rol' => $user->rol,
-                'discount' => $user->coupon
+                'discount' => $user->coupon,
+                'wishlist' => $user->wishlist,
+                'purchase' => $user->purchase
             ];
         }
         return response()->json($array);
