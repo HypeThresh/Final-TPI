@@ -142,4 +142,34 @@ class ProductController extends Controller
         );
         return response()->json($data);
     }
+
+    public function detach(Request $request){
+        $product = Product::find($request->product_id);
+        $product->category()->detach($request->category_id);
+        $data = array(
+            'message' => 'Category detached successfully',
+            'product' => $product
+        );
+        return response()->json($data);
+    }
+
+    public function detachCategory(Request $request){
+        $product = Product::find($request->product_id);
+        $product->category()->detach($request->category_id);
+        $data = array(
+            'message' => 'Category detached successfully',
+            'product' => $product
+        );
+        return response()->json($data);
+    }
+
+    public function detachSupplier(Request $request){
+        $product = Product::find($request->product_id);
+        $product->supplier()->detach($request->supplier_id);
+        $data = array(
+            'message' => 'Supplier detached successfully',
+            'product' => $product
+        );
+        return response()->json($data);
+    }
 }

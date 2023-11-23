@@ -76,3 +76,12 @@ Route::post("/purchase/payment", "App\Http\Controllers\PurchaseController@attach
 Route::post("/products/category", "App\Http\Controllers\ProductController@attachCategory");//ready
 Route::post("/products/supplier", "App\Http\Controllers\ProductController@attachSupplier");//ready
 
+Route::delete("/users/{user}/discount", "App\Http\Controllers\UserController@detach");//no
+Route::delete("/users/{user}/wishlist", "App\Http\Controllers\UserController@detachWishlist");//no
+Route::delete("/users/{user}/purchase", "App\Http\Controllers\UserController@detachPurchase");//no
+Route::delete("/users/{user}/payment", "App\Http\Controllers\UserController@detachPayment");//no
+Route::delete("/wishlist/{wishlist}/product", "App\Http\Controllers\WishlistController@detachWishlist");//no
+Route::delete("/purchase/{purchase}/product", "App\Http\Controllers\PurchaseController@detach");//no
+Route::delete("/purchase/{purchase}/payment", "App\Http\Controllers\PurchaseController@detachPayment");//no
+Route::delete("/products/{product}/category", "App\Http\Controllers\ProductController@detachCategory");//no
+Route::delete("/products/{product}/supplier", "App\Http\Controllers\ProductController@detachSupplier");//no

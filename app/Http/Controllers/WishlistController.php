@@ -112,4 +112,24 @@ class WishlistController extends Controller
         );
         return response()->json($data);
     }
+
+    public function detach(Request $request){
+        $wishlist = Wishlist::find($request->wishlist_id);
+        $wishlist->products()->detach($request->product_id);
+        $data = array(
+            'message' => 'Product detached successfully',
+            'wishlist' => $wishlist
+        );
+        return response()->json($data);
+    }
+
+    public function detachWishlist(Request $request){
+        $wishlist = Wishlist::find($request->wishlist_id);
+        $wishlist->products()->detach($request->product_id);
+        $data = array(
+            'message' => 'Product detached successfully',
+            'wishlist' => $wishlist
+        );
+        return response()->json($data);
+    }
 }

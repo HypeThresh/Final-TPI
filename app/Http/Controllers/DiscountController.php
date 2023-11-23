@@ -95,5 +95,16 @@ class DiscountController extends Controller
             'discount' => $discount
         );
         return response()->json($data);
-    }   
+    }
+
+    public function detach(Request $request){
+
+        $discount = Discount::find($request->discount_id);
+        $discount->coupon()->detach($request->user_id);
+        $data = array(
+            'message' => 'Discount detached successfully',
+            'discount' => $discount
+        );
+        return response()->json($data);
+    }
 }
