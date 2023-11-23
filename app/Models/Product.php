@@ -18,7 +18,12 @@ class Product extends Model
 
     public function category(){
         //return a belongsTo relationship for a table called product
-        return $this->belongsToMany(Product::class,'product_category');
+        return $this->belongsToMany(Category::class,'product_category');
+    }
+
+    public function supplier(){
+        //return a belongsTo relationship for a table called product
+        return $this->belongsToMany(Supplier::class,'suppliers_products');
     }
 
 }

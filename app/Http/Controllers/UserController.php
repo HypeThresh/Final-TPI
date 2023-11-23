@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('purchase.products','purchase.payment')->get();
+        $users = User::with('purchase.products','purchase.payment','wishlist.product')->get();
         //return $users as json response
         $array = [];
         foreach($users as $user){

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 
 class ProductController extends Controller
 {
@@ -13,6 +14,21 @@ class ProductController extends Controller
     {
         $products = Product::all();
         //return $products as json response
+        $array = [];
+        foreach($products as $product){
+            $array[]= [
+                'id' => $product->id,
+                'name_product' => $product->name_product,
+                'description_product' => $product->description_product,
+                'img_product' => $product->img_product,
+                'product_price'=> $product->product_price,
+                'product_cost' => $product->product_cost,
+                'product_stock' => $product->product_stock,
+                'category' => $product->category,
+                'supplier' => $product->supplier
+            ];
+        }
+
         return response()->json($products);
 
     }
@@ -102,6 +118,26 @@ class ProductController extends Controller
         $product->category()->attach($request->category_id);
         $data = array(
             'message' => 'Category attached successfully',
+            'product' => $product
+        );
+        return response()->json($data);
+    }
+
+    public function attachCategory(Request $request){
+        $product = Product::find($request->product_id);
+        $product->category()->attach($request->category_id);
+        $data = array(
+            'message' => 'Category attached successfully',
+            'product' => $product
+        );
+        return response()->json($data);
+    }
+
+    public function attachSupplier(Request $request){
+        $product = Product::find($request->product_id);
+        $product->supplier()->attach($request->supplier_id);
+        $data = array(
+            'message' => 'Supplier attached successfully',
             'product' => $product
         );
         return response()->json($data);
