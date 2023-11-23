@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('purchase.products')->get();
+        $users = User::with('purchase.products','purchase.payment')->get();
         //return $users as json response
         $array = [];
         foreach($users as $user){
@@ -153,6 +153,17 @@ class UserController extends Controller
         $user->purchase()->attach($request->purchase_id);
         $data = array(
             'message' => 'Purchasee attached successfully',
+            'user' => $user
+        );
+        return response()->json($data);
+    }
+
+    public function attachPayment(Request $request){
+
+        $user = User::find($request->user_id);
+        $user->payment()->attach($request->payment_id);
+        $data = array(
+            'message' => 'Payment attached successfully',
             'user' => $user
         );
         return response()->json($data);

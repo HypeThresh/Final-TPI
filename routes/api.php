@@ -69,6 +69,7 @@ Route::delete("/discount/{discount}", "App\Http\Controllers\DiscountController@d
 Route::post("/users/discount", "App\Http\Controllers\UserController@attach");//ready
 Route::post("/users/wishlist", "App\Http\Controllers\UserController@attachWishlist");//ready
 Route::post("/users/purchase", "App\Http\Controllers\UserController@attachPurchase");//ready
+Route::post("/users/payment", "App\Http\Controllers\UserController@attachPayment");//ready
 Route::post("/wishlist/product", "App\Http\Controllers\ProductController@attachwishlist");//ready
 Route::post("/purchase/product", "App\Http\Controllers\PurchaseController@attach");//ready
 Route::post("/purchase/payment", "App\Http\Controllers\PurchaseController@attachPayment");//ready
